@@ -1,18 +1,26 @@
 import tkinter as tk
+from PIL import Image, ImageTk  # Pillow 模組可支援更多格式 (需安裝 Pillow)
 
 # 建立主視窗
 root = tk.Tk()
 root.title("Tkinter 範例")
 root.geometry("300x200")
 
-# 建立 Label（多行文字）
-label = tk.Label(
-    root,
-    text="這是第一行範例文字\n這是第二行範例文字\n這是第三行範例文字",
-    font=("Microsoft JhengHei UI", 16),
-    justify="left"  # 讓文字靠左對齊
-)
-label.pack(pady=20)  # 加一些上下間距
+# 載入圖片（請替換為你的圖片路徑，例如 'image.png'）
+image_path = "image.png"
+img = Image.open(image_path)
+img = img.resize((200, 100))  # 可依需求縮放圖片大小
+photo = ImageTk.PhotoImage(img)
+
+# 建立 Label 顯示圖片
+image_label = tk.Label(root, image=photo)
+image_label.pack(pady=10)
+
+# 必須保留 photo 的引用，否則圖片可能不顯示（被垃圾回收）
+image_label.image = photo
 
 # 啟動主迴圈
 root.mainloop()
+
+
+
