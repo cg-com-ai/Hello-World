@@ -1,17 +1,18 @@
 import tkinter as tk
-from tkinter import messagebox
-
-def say_hello():
-    messagebox.showinfo("訊息", "哈囉，這是 Tkinter！")
 
 # 建立主視窗
 root = tk.Tk()
 root.title("Tkinter 範例")
 root.geometry("300x200")
 
-# 建立按鈕
-button = tk.Button(root, text="點我", command=say_hello)
-button.pack(pady=50)
+# 建立 Label（多行文字）
+label = tk.Label(
+    root,
+    text="這是第一行範例文字\n這是第二行範例文字\n這是第三行範例文字",
+    font=("Microsoft JhengHei UI", 16),
+    justify="left"  # 讓文字靠左對齊
+)
+label.pack(pady=20)  # 加一些上下間距
 
-# 執行主迴圈
+# 啟動主迴圈
 root.mainloop()
